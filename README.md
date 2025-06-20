@@ -2,7 +2,7 @@
 
 This is a plugin for [Obsidian](https://obsidian.md/) that auto-closes HTML tags, such as `<div>`, `<span>`, etc.
 
-[comment]: <> (gif)
+![Auto Close Tags](auto-close-tags-gif.gif)
 
 ### Usage
 

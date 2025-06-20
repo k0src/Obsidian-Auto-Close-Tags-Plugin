@@ -14,9 +14,7 @@ To exclude certain tags from being auto-closed, you can go to the plugin setting
 
 ### Hotkeys
 
-Hotkeys can be changed in the Obsidian settings under "Hotkeys". The default hotkeys are:
-
--   `Ctrl + Alt + T`: Close the last opened tag at the cursor position.
+Hotkeys can be changed in the Obsidian settings under "Hotkeys".
 
 ### Development
 

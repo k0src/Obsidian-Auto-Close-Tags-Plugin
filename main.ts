@@ -15,11 +15,22 @@ const DEFAULT_SETTINGS: AutoCloseTagsSettings = {
 };
 
 export default class AutoCloseTags extends Plugin {
+	private allowAutoClose: boolean = false;
 	settings: AutoCloseTagsSettings;
 	private lastProcessedPosition: { line: number; ch: number } | null = null;
 
 	async onload() {
 		await this.loadSettings();
+
+		this.registerDomEvent(document, "paste", () => {
+			this.allowAutoClose = true;
+		});
+
+		this.registerDomEvent(document, "keydown", (evt: KeyboardEvent) => {
+			if (evt.key === ">") {
+				this.allowAutoClose = true;
+			}
+		});
 
 		this.registerEvent(
 			this.app.workspace.on("editor-change", (editor) => {
@@ -32,7 +43,7 @@ export default class AutoCloseTags extends Plugin {
 		this.addCommand({
 			id: "close-last-tag",
 			name: "Close last unclosed tag",
-			hotkeys: [{ modifiers: ["Ctrl", "Alt"], key: "t" }],
+			hotkeys: [],
 			editorCallback: (editor) => {
 				this.insertClosingTag(editor);
 			},
@@ -43,6 +54,7 @@ export default class AutoCloseTags extends Plugin {
 
 	handleTyping(editor: Editor) {
 		const cursor = editor.getCursor();
+		const line = editor.getLine(cursor.line);
 
 		if (
 			this.lastProcessedPosition &&
@@ -52,7 +64,8 @@ export default class AutoCloseTags extends Plugin {
 			return;
 		}
 
-		const line = editor.getLine(cursor.line);
+		if (!this.allowAutoClose) return;
+		this.allowAutoClose = false;
 
 		if (cursor.ch === 0 || line[cursor.ch - 1] !== ">") {
 			return;
@@ -225,6 +238,8 @@ export default class AutoCloseTags extends Plugin {
 		const tagToClose = openTags[openTags.length - 1].tag;
 		const closingTag = `</${tagToClose}>`;
 		const cursor = editor.getCursor();
+
+		this.allowAutoClose = true;
 
 		editor.replaceRange(closingTag, cursor);
 

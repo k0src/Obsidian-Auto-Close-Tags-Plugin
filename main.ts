@@ -78,8 +78,7 @@ export default class AutoCloseTags extends Plugin {
 		if (
 			!tagMatch ||
 			beforeCursor.endsWith("/>") ||
-			beforeCursor.endsWith("</") ||
-			beforeCursor.includes("</")
+			beforeCursor.endsWith("</")
 		) {
 			return;
 		}

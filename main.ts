@@ -104,10 +104,6 @@ export default class AutoCloseTags extends Plugin {
 			return;
 		}
 
-		if (this.hasMatchingClosingTag(editor, tag, cursor.line, cursor.ch)) {
-			return;
-		}
-
 		const closingTag = `</${tag}>`;
 		const insertPos = { line: cursor.line, ch: cursor.ch };
 
@@ -237,8 +233,6 @@ export default class AutoCloseTags extends Plugin {
 		const tagToClose = openTags[openTags.length - 1].tag;
 		const closingTag = `</${tagToClose}>`;
 		const cursor = editor.getCursor();
-
-		this.allowAutoClose = true;
 
 		editor.replaceRange(closingTag, cursor);
 

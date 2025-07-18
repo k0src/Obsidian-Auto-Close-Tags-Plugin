@@ -312,10 +312,8 @@ class AutoCloseTagsSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		containerEl.createEl("h2", { text: "Auto Close Tags Settings" });
-
 		new Setting(containerEl)
-			.setName("Excluded Tags")
+			.setName("Excluded tags")
 			.setDesc(
 				"Comma-separated list of tags that should not be auto-closed (e.g., div, span, i)."
 			)
@@ -330,7 +328,7 @@ class AutoCloseTagsSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Cursor Position After Auto-Close")
+			.setName("Cursor position after auto-close")
 			.setDesc("Where to place the cursor after auto-closing a tag.")
 			.addDropdown((dropdown) =>
 				dropdown
@@ -344,7 +342,7 @@ class AutoCloseTagsSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Ignore Fenced Code Blocks")
+			.setName("Ignore fenced code blocks")
 			.setDesc(
 				"Avoid auto-closing tags inside Markdown code blocks (``` blocks)."
 			)
@@ -358,7 +356,7 @@ class AutoCloseTagsSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Ignore Inline Code")
+			.setName("Ignore inline code")
 			.setDesc(
 				"Avoid auto-closing tags inside inline code spans (e.g., `<div>`)."
 			)

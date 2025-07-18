@@ -226,7 +226,6 @@ export default class AutoCloseTags extends Plugin {
 		}
 
 		if (openTags.length === 0) {
-			console.log("No unclosed tags found");
 			return;
 		}
 

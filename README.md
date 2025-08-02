@@ -1,33 +1,37 @@
-## Auto Close Tags
+# Auto Close Tags
 
-This is a plugin for [Obsidian](https://obsidian.md/) that auto-closes HTML tags, such as `<div>`, `<span>`, etc.
+Automatically close HTML tags as you type in [Obsidian](https://obsidian.md/).
 
-![Auto Close Tags](auto-close-tags-gif.gif)
+![splash](assets/splash.png)
 
-### Usage
+## Installation
 
-By default, after enabling the plugin, it will automatically close HTML tags as you type. For example, if you type `<div>`, it will automatically add the closing tag `</div>`.
+Install from the **Community Plugins** section in Obsidian:
 
-### Settings
+1. Open Obsidian Settings
+2. Go to **Community Plugins** → **Browse**
+3. Search for "Auto Close Tags"
+4. Click **Install** and **Enable**
 
-To exclude certain tags from being auto-closed, you can go to the plugin settings and add them to the "Excluded Tags" list. The position of the cursor can be changed for the closing tag by enabling the "Place cursor at end of closing tag" option. This will place the cursor after the closing tag, for tags closed by hotkeys. Additionally, tags in fenced code blocks and inline code can be ignored.
+## Features
 
-### Hotkeys
+-   **Auto-close on typing**: Automatically adds closing tags when you type `>`
+-   **Auto-close on paste**: Works when pasting HTML content
+-   **Manual closing**: Use the "Close last unclosed tag" command (configurable hotkey)
+-   **Smart detection**: Handles nested tags and self-closing elements
+-   **Exclude tags**: Configure which tags to ignore in settings
+-   **Code block awareness**: Optionally ignore tags in code blocks and inline code
 
-Hotkeys can be changed in the Obsidian settings under "Hotkeys".
+## Settings
 
-### Development
+-   **Excluded tags**: Comma-separated list of tags to ignore (e.g., `div, span, i`)
+-   **Cursor position**: Place cursor between tags or after closing tag
+-   **Ignore fenced code blocks**: Skip auto-closing in ` ``` ` code blocks
+-   **Ignore inline code**: Skip auto-closing in `inline code` spans
 
-To develop this plugin, you can clone the repository and run the following commands:
+## Development
 
 ```bash
 npm install
+npm run build
 ```
-
-```bash
-npm run dev
-```
-
-### Notes
-
-This plugin is experimental and may not work perfectly in all cases. It is distributed as-is.

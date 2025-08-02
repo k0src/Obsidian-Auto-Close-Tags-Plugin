@@ -2,7 +2,7 @@
 
 Automatically close HTML tags as you type in [Obsidian](https://obsidian.md/).
 
-![splash](assets/splash.png)
+![splash](assets/splash-sm.png)
 
 ## Installation
 
